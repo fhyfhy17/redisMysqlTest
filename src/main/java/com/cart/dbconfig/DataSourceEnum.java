@@ -1,12 +1,10 @@
 package com.cart.dbconfig;
 
-/**
- * 数据源上下文
- */
+
 public enum DataSourceEnum{
 
     MASTER("mast", true),
-    MASTER2("mast2", true),;
+    MASTER2("mast2", false),;
 
     private String name;
 
