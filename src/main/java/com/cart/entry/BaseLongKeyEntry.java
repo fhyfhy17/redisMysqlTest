@@ -8,7 +8,8 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 @Data
-public class BaseLongKeyEntry{
+public class BaseLongKeyEntry extends ModifyFieldsMap
+{
 	@Id
 	@GeneratedValue
 	protected long id;

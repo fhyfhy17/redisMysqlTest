@@ -5,10 +5,13 @@ import com.cart.dbconfig.DataSourceEnum;
 import com.cart.dbconfig.DynamicDataSource;
 import com.cart.entry.PlayerEntry;
 import lombok.extern.slf4j.Slf4j;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @RestController
@@ -42,5 +45,35 @@ public class WebTestEnter
 				x->log.info(x.toString())
 		);
 		
+	}
+	
+	@RequestMapping("/test/test4")
+	public void test4()
+	{
+		
+		PlayerEntry p1 = new PlayerEntry();
+		p1.setId(1);
+		p1.setName("王二");
+		
+		
+		
+		
+		PlayerEntry p2 = new PlayerEntry();
+		p2.setId(2);
+		p2.setName("王二");
+		log.info(BeanChangeUtil.contrastObj(p1,p2));
+	}
+	
+	public static void main(String[] args) throws InvocationTargetException, IllegalAccessException
+	{
+		PlayerEntry p1 = new PlayerEntry();
+		p1.setId(1);
+		p1.setName("王二");
+		p1.setUserId(2);
+		
+		PlayerEntry p2 = new PlayerEntry();
+		
+		BeanUtils.copyProperties(p2,p1);
+	
 	}
 }
